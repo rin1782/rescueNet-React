@@ -1,4 +1,7 @@
-import React, { Component }from 'react';
+import React, { Component } from 'react';
+import { signup } from '../redux/actions/authActions';
+import { connect } from 'react-redux';
+
 
 class Signup extends Component {
     state = {
@@ -15,7 +18,7 @@ class Signup extends Component {
 
     handleOnSubmit = e => {
         e.preventDefault()
-        
+        this.props.signup(this.state);
     }
 
     render() {
@@ -45,6 +48,7 @@ class Signup extends Component {
                         onChange={this.handleOnChange}
                         type="text"
                     />
+                    <br />
                     <button type="submit">Signup</button>
                 </form>
             </div>
@@ -52,4 +56,4 @@ class Signup extends Component {
     }
 }
 
-export default Signup;
+export default connect(null, {signup})(Signup);
